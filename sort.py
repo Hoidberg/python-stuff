@@ -1,3 +1,5 @@
+from math import floor
+
 delta = [None] * 4
 
 def make_delta(N: int):
@@ -7,13 +9,13 @@ def make_delta(N: int):
     while True:
         half = power
         power <<= 1
-        delta[i] = int((N + half) / power)
+        delta[i] = floor((N + half) / power)
         if delta[i] == 0:
             break
         i += 1
 
 def binarysearch(el: int, a: list, k=None):
-    k = k if k is not None else len(a)
+    k = len(a) if k is None else k
     make_delta(k)
     i = delta[0] - 1
     d = 0
